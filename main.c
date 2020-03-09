@@ -13,8 +13,7 @@ int main ()
     mostrarpercep(n1);
     procesarInputs(n1, inputs);
 
-    printf("\n\nLa salida de la neurona es %f\n", n1->salida);
+    printf("\nLa salida de la neurona es %f\n\n", n1->salida);
 
    return 0;
-
 }

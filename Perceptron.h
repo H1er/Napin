@@ -19,14 +19,8 @@ struct perceptron{
 
 void mostrarpercep(neuron n);
 
-
 void procesarInputs(neuron percep, double* entradas);
 
 void init (neuron* percep, char* activ, double alfa, double bias, int ninp, double* weights);
-
-
-
-
-
 
 #endif
