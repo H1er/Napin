@@ -19,7 +19,9 @@ static double tanhip (double x);
 
 static double softplus (double x);
 
-static double softsign (double x);
+static double softsign (double x); 
+
+static double paso (double x);
 
 
 

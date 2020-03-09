@@ -6,7 +6,7 @@
 
 double calculate(char* id, double x, double a)
 {
-    printf("ID: %s\n", id);
+   // printf("ID: %s\n", id);
 
     if (!strcmp(id, "sigmoid"))
     {
@@ -44,11 +44,27 @@ double calculate(char* id, double x, double a)
     {
         return softsign(x);
     }
+    else if(!strcmp(id,"paso"))
+    {
+        return paso(x);
+    }
     else
     {
         //hacer que de algun error
         printf("Error, activation name incorrect or not defined in here");
         return -1;
+    }
+}
+
+static double paso(double x)
+{
+    if (x>0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
     }
 }
 

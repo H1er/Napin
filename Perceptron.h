@@ -6,7 +6,7 @@
 
 typedef struct perceptron* neuron;
 
-typedef struct perceptron{
+struct perceptron{
 
     char* activation;
     double alpha;
@@ -14,24 +14,15 @@ typedef struct perceptron{
     double sesgo;
     double salida;
     double* pesos; // en el metodo init // = (double*) malloc(nentradas*sizeof(double));
-    /* input
-     *
-     * bias
-     * 
-     * input weights
-     * 
-     *  
-     * 
-     *  
-    */
+  
 };
 
-
+void mostrarpercep(neuron n);
 
 
 void procesarInputs(neuron percep, double* entradas);
 
-void init (neuron percep, char* activ, double alfa, double bias, int ninp, double* weights);
+void init (neuron* percep, char* activ, double alfa, double bias, int ninp, double* weights);
 
 
 
