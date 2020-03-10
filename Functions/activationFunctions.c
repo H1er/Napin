@@ -40,7 +40,7 @@ double calculate(char* id, double x, double a)
     {
         return softplus(x);
     }
-    else if(!strcmp(id, "sofsign"))
+    else if(!strcmp(id, "softsign"))
     {
         return softsign(x);
     }

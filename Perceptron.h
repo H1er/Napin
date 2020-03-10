@@ -14,7 +14,7 @@ struct perceptron{
     double sesgo;
     double salida;
     double* pesos; // en el metodo init // = (double*) malloc(nentradas*sizeof(double));
-  
+
 };
 
 void mostrarpercep(neuron n);
