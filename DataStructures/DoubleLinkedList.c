@@ -13,10 +13,9 @@ void AddLayer(TLayer * plist, int numneurons, char* activation, double alpha, in
   TLayer ptr; 
   TLayer aux = (TLayer)malloc(sizeof(struct Layer));
 
-
   aux->layerid = layd  ; //id de la capa 
   aux->numneurons = numneurons;
-  (aux)->neurons = (neuron*)malloc((numneurons *sizeof(struct perceptron))); //corrupted top size al guardar espacio para las neuronas idk
+  (aux)->neurons = (neuron*)malloc((numneurons *sizeof(struct perceptron)));
   
   ptr = (*plist);
 
@@ -65,14 +64,12 @@ void Show(TLayer  plist)
     showLayer(plist);
     plist = plist->next;
   }
-
-    printf("\n");
+  printf("\n");
 }
 
 /* Destroys the list and sets it to NULL */
 void Destroy(TLayer * plist)
 {
-
   TLayer ptr = (*plist);
   TLayer aux;
  
@@ -94,7 +91,6 @@ struct Layer getIndex(TLayer plist, int index)
     plist = plist->next;
     cont++;
   }
-  printf("-------------------------------------------");
 
   if (plist->next == NULL)
   { 
