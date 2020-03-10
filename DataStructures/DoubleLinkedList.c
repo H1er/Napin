@@ -32,11 +32,12 @@ void AddLayer(TLayer * plist, int numneurons, char* activation, double alpha, in
   }
   else //resto de capas
   {
-    aux->ninputs = ptr->numneurons; 
+    //printf("NumNeurons: %d", ptr->numneurons);
     while((ptr->next != NULL))    //ir al final de la cola e insertar
     {
     	ptr = ptr->next;
     }
+    aux->ninputs = ptr->numneurons; 
 
     for(int i=0;i<numneurons;i++)
     {
@@ -54,6 +55,7 @@ void showLayer (TLayer lay)
   printf("\n----------Layer %d----------\n", lay->layerid);
   printf("Numero de neuronas: %d\n", lay->numneurons);
   printf("Funcion activacion: %s\n", lay->neurons[0]->activation);
+  printf("Entradas/neurona: %d\n", lay->ninputs);
   printf("-------------------------\n");
 }
 
