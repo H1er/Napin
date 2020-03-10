@@ -6,8 +6,6 @@
 
 double calculate(char* id, double x, double a)
 {
-   // printf("ID: %s\n", id);
-
     if (!strcmp(id, "sigmoid"))
     {
         return sigmoid(x);

@@ -17,7 +17,7 @@ int main()
 
   printf("init done\n");*/
 
-  AddLayer(&lista, 4, "paso", 0,4,1); //Se añaden las capas 
+  AddLayer(&lista, 4, "paso", 0,4,1); //Se añaden las capas con su id
   AddLayer(&lista, 8, "sigmoid", 0,0,2);
   AddLayer(&lista, 8, "relu", 0,0,3);
   AddLayer(&lista, 4, "tanh", 0,0,4);

@@ -1,6 +1,7 @@
 #ifndef ACTIVATIONFUNCTIONS_H
 #define ACTIVATIONFUNCTIONS_H
 
+
 double calculate (char* id, double x, double a);
 
 static double sigmoid (double x);

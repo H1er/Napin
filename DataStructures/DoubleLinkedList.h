@@ -21,7 +21,7 @@ struct Layer
     struct Layer *prev;
 };
 
-/* Creates an empty List */
+/* Creates an empty List  */
 void Create(TLayer * plist);
 
 struct Layer getIndex(TLayer plist, int index);

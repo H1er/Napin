@@ -12,7 +12,6 @@ void init (neuron* perceptron, char* activ, double alfa, double bias, int ninp, 
     strcpy(percep->activation, activ);
     percep->nentradas = ninp;
 
-
     if(weights != NULL) //si se da explicitamente un array de pesos
     {
         percep->pesos = malloc(sizeof(weights));

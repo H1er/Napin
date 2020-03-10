@@ -14,7 +14,7 @@ void AddLayer(TLayer * plist, int numneurons, char* activation, double alpha, in
   TLayer aux = (TLayer)malloc(sizeof(struct Layer));
 
 
-  aux->layerid = layd;
+  aux->layerid = layd  ; //id de la capa 
   aux->numneurons = numneurons;
   (aux)->neurons = (neuron*)malloc((numneurons *sizeof(struct perceptron))); //corrupted top size al guardar espacio para las neuronas idk
   

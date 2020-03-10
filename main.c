@@ -20,7 +20,7 @@ int main ()
 
     printf("\nLa salida de la neurona es %f\n\n", n1->salida);
 
-    printf("--------------------------Fin prueba perceptron--------------------------\n");
+    printf("--------------------------Fin prueba perceptron--------------------------\n"); //probar capas desde fuera del directorio DataStructures
 
 
 
