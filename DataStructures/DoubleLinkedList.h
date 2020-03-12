@@ -14,8 +14,8 @@ struct Layer
     int layerid;
     int numneurons;
     double* input;
+    double* output;
     int ninputs;
-
 
     struct Layer *next;
     struct Layer *prev;
@@ -26,8 +26,12 @@ void Create(TLayer * plist);
 
 struct Layer getIndex(TLayer plist, int index);
 
+void processLayer(TLayer* layer, double* entradas);
 
-void AddLayer(TLayer * plist, int numneurons, char* activation, double alpha, int ninputs, int layd);
+void showLayer (TLayer lay);
+
+
+void Addlayer(TLayer * plist, int numneurons, char* activation, double alpha, int ninputs, int layd);
 
 void Show(TLayer plist);
 

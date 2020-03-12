@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "Perceptron.h"
 #include "Functions/activationFunctions.h"
 
@@ -11,7 +12,7 @@ void init (neuron* perceptron, char* activ, double alfa, double bias, int ninp, 
 
     strcpy(percep->activation, activ);
     percep->nentradas = ninp;
-
+    //printf("Sesgo: %f\n", bias);
     if(weights != NULL) //si se da explicitamente un array de pesos
     {
         percep->pesos = malloc(sizeof(weights));
@@ -23,7 +24,8 @@ void init (neuron* perceptron, char* activ, double alfa, double bias, int ninp, 
          
         for(int j=0;j<ninp;j++)
         {
-            percep->pesos[j] = (rand()%100/100);
+            percep->pesos[j] = ((double)((rand()%100))/100)-(rand()%2);
+            //printf("Se añade peso: %f a la entrada %d\n",percep->pesos[j], j);
         }
     }
 
@@ -34,6 +36,7 @@ void init (neuron* perceptron, char* activ, double alfa, double bias, int ninp, 
 
 void procesarInputs(neuron percep, double* entradas)
 {
+    printf("2");
     double sum=0;
 
     for(int i=0;i<percep->nentradas;i++)
