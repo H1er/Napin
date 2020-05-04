@@ -1,6 +1,6 @@
 
-#ifndef DOUBLELINKEDLIST_H
-#define	DOUBLELINKEDLIST_H
+#ifndef LAYER_H
+#define	LAYER_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,11 +31,11 @@ void processLayer(TLayer* layer, double* entradas);
 void showLayer (TLayer lay);
 
 
-void Addlayer(TLayer * plist, int numneurons, char* activation, double alpha, int ninputs, int layd);
+void Addlayer(TLayer * plist, TLayer * otp, int numneurons, char* activation, double alpha, int ninputs, int layd);
 
 void Show(TLayer plist);
 
 void Destroy(TLayer * plist);
 
 
-#endif	/* DOUBLELINKEDLIST_H */
+#endif	/* LAYER_H */

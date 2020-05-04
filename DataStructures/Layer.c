@@ -1,4 +1,4 @@
-#include "DoubleLinkedList.h"
+#include "Layer.h"
 #include "../Perceptron.h"
 #include <string.h>
 #include <time.h>
@@ -9,7 +9,7 @@ void Create(TLayer * plist)
   *plist=NULL;
 }
 
-void Addlayer(TLayer * plist, int numneurons, char* activation, double alpha, int ninputs, int layd)
+void Addlayer(TLayer * plist,TLayer * otp, int numneurons, char* activation, double alpha, int ninputs, int layd)
 {
   TLayer ptr;
   TLayer aux = (TLayer)malloc(sizeof(struct Layer));
@@ -25,6 +25,7 @@ void Addlayer(TLayer * plist, int numneurons, char* activation, double alpha, in
   {
     aux->ninputs = ninputs;
     (*plist) = aux;
+    (*otp) = (*plist);
 
     for(int i=0;i<numneurons;i++)
     {
@@ -47,6 +48,7 @@ void Addlayer(TLayer * plist, int numneurons, char* activation, double alpha, in
     ptr->next = aux;
     aux->prev = ptr;
     aux->next = NULL;
+    *otp = aux;
   }
 }
 

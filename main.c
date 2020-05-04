@@ -6,6 +6,8 @@
 
 int main ()
 {
+    srand(time(NULL)); //sin esto los numeros generados para los pesos y los sesgos no son aleatorios
+
    /* printf("--------------------------Funcionamiento del perceptron simple--------------------------\n");
 
     double pesos [2]= {1,1};
@@ -31,9 +33,9 @@ int main ()
 
     createNetwork(&network, 2);
 
-    AddLayer(&network, 1, "paso", 0);
-    AddLayer(&network, 2, "relu", 0);
-    AddLayer(&network, 1, "paso", 0);
+    AddLayer(&network, 2, "paso", 0);
+    AddLayer(&network, 3, "relu", 0);
+    AddLayer(&network, 2, "paso", 0);
 
    // ShowNetwork(network);
 
@@ -50,12 +52,19 @@ int main ()
     if(network->net == NULL)
     {
         printf("algo ha pasado\n");
-    }
+    }  
 
+    ShowNetwork(network);
+
+    ShowOutput(network);
 
     
 
-    ShowNetwork(network);
+
+
+
+
+    //-------------------Backforwarding-------------------------
 
 
 
