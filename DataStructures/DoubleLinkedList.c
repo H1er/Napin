@@ -52,9 +52,10 @@ void Addlayer(TLayer * plist, int numneurons, char* activation, double alpha, in
 
 void showLayer (TLayer lay)
 {
-  printf("Show");
-  printf("\n----------Layer %d----Numneurons: %d----\n", lay->layerid, lay->numneurons);
+  printf("\n----------Layer %d-------\n", lay->layerid);
   printf("---Neuronas---: %d\n", lay->numneurons);
+  printf("\n");
+
   for(int i=0;i<lay->numneurons;i++)
   {
     printf("---Neuron %d---\n", i);
@@ -69,7 +70,7 @@ void showLayer (TLayer lay)
   }
   printf("Funcion activacion: %s\n", lay->neurons[0]->activation);
   printf("Entradas/neurona: %d\n", lay->ninputs);
-  printf("---------------------------\n");
+  printf("---------------------------\n\n\n");
 }
 
 void Show(TLayer  plist)
@@ -102,10 +103,10 @@ void processLayer(TLayer* layer, double* entradas)
   //printf("\nNumneurons: %d\n", layer->numneurons);
   for(int j=0;j<(lay->numneurons);j++)
   {
-    printf("1");
+  
     procesarInputs(lay->neurons[j], inp);
     lay->output[j] = (lay->neurons[j])->salida;
-    printf("output: %f\n",lay->output[j]);
+   
   }
 
  // printf("---LAYER---");

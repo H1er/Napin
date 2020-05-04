@@ -36,7 +36,7 @@ void init (neuron* perceptron, char* activ, double alfa, double bias, int ninp, 
 
 void procesarInputs(neuron percep, double* entradas)
 {
-    printf("2");
+
     double sum=0;
 
     for(int i=0;i<percep->nentradas;i++)
