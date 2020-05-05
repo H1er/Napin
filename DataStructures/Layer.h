@@ -31,6 +31,7 @@ void processLayer(TLayer* layer, double* entradas);
 void showLayer (TLayer lay);
 
 
+
 void Addlayer(TLayer * plist, TLayer * otp, int numneurons, char* activation, double alpha, int ninputs, int layd);
 
 void Show(TLayer plist);

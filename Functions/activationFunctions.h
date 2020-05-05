@@ -26,4 +26,4 @@ static double paso (double x);
 
 
 
-#endif 
+#endif /* ACTIVATIONFUNCTIONS_H */

@@ -1,7 +1,7 @@
 #ifndef NNETWORK_H
 #define	NNETWORK_H
 
-#include "DataStructures/Layer.c"
+#include "DataStructures/Layer.h"
 
 typedef struct network* Nnetwork;
 
@@ -25,4 +25,4 @@ void ShowNetwork(Nnetwork net);
 void ShowOutput(Nnetwork net);
 
 
-#endif
+#endif /* NNETWORK_H */

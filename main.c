@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h> 
+#include <time.h>
 #include "Nnetwork.h" 
-#include "Perceptron.h"
-//#include "DataStructures/DoubleLinkedList.h"
 
 int main ()
 {
@@ -57,6 +56,7 @@ int main ()
     ShowNetwork(network);
 
     ShowOutput(network);
+
 
     
 
