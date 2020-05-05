@@ -18,7 +18,7 @@ void init (neuron* perceptron, char* activ, double alfa, double bias, int ninp, 
         percep->pesos = malloc(sizeof(weights));
         percep->pesos = weights;
     }
-    else                //si no se da de forma explicita los pesos se inicializan aleatoirios
+    else                //si no se dan de forma explicita los pesos se inicializan aleatorios (principalmente para cargar modelos ya creados anteriormente)
     {
         percep->pesos = malloc(sizeof(double)*ninp);
          

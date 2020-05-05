@@ -57,13 +57,6 @@ int main ()
 
     ShowOutput(network);
 
-
-    
-
-
-
-
-
     //-------------------Backforwarding-------------------------
 
 

@@ -1,5 +1,5 @@
 {
     "files.associations": {
-        "activationfunctions.h": "c"
+        "nnetwork.h": "c"
     }
 }
