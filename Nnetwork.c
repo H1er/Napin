@@ -26,6 +26,7 @@ void processInput(Nnetwork* net2, double* input)
         nnet = nnet->next;
     }
 
+
   
 }
 
@@ -52,4 +53,22 @@ void ShowOutput(Nnetwork net)
     }
 
     printf("\n\n");
+}
+
+void updateWeights(Nnetwork* net)
+{
+
+}
+
+double* getoutput(Nnetwork net)
+{
+    if(net->otplayer->output == NULL)
+    {
+        printf("Error, can't get output if network has no processed input\n");
+        exit(-1);
+    }
+    else
+    {
+        return net->otplayer->output;
+    }
 }
