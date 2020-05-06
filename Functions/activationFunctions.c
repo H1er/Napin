@@ -2,6 +2,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 
 double calculate(char* id, double x, double a)
@@ -30,7 +31,7 @@ double calculate(char* id, double x, double a)
     {
         return randomize_relu(x, a);
     }
-    else if(!strcmp(id, "tanhip"))
+    else if(!strcmp(id, "tanh"))
     {
         return tanh(x);
     }
@@ -49,8 +50,8 @@ double calculate(char* id, double x, double a)
     else
     {
         //hacer que de algun error
-        printf("Error, activation name incorrect or not defined in here");
-        return -1;
+        printf("Error, activation name incorrect or not defined in here\n");
+        exit(-1);
     }
 }
 
