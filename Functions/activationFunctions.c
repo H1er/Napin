@@ -50,7 +50,7 @@ double calculate(char* id, double x, double a)
     else
     {
         //hacer que de algun error
-        printf("Error, activation name incorrect or not defined in here\n");
+        printf("Error, activation function name incorrect or not defined in here\n");
         exit(-1);
     }
 }
