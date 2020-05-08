@@ -3,9 +3,9 @@
 
 
 
-void calculatecost();
+double calculatecost(char* name, double actual, double expected);
 
-double cuadratic (double expected, double actual);
+double cuadraticsquare (double expected, double actual);
 
 
 
