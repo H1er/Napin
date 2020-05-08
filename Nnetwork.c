@@ -25,9 +25,6 @@ void processInput(Nnetwork* net2, double* input)
 
         nnet = nnet->next;
     }
-
-
-  
 }
 
 void AddLayer(Nnetwork* net, int numneurons, char* activation, double alpha)
@@ -71,4 +68,9 @@ double* getoutput(Nnetwork net)
     {
         return net->otplayer->output;
     }
+}
+
+void backprop(Nnetwork* net, double learning_rate)
+{
+
 }

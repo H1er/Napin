@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h> 
 #include <time.h>
-#include "Nnetwork.h" 
+#include "Nnetwork.h"
+#include "Functions/costFunctions.h" 
 
 int main ()
 {
@@ -32,32 +33,58 @@ int main ()
 
     createNetwork(&network, 2);
 
-    AddLayer(&network, 2, "paso", 0);
+    /*AddLayer(&network, 2, "paso", 0);
     AddLayer(&network, 3, "relu", 0);
-    AddLayer(&network, 2, "paso", 0);
+    AddLayer(&network, 2, "paso", 0);*/
 
+/* limites (llena la ram): 75 capas de 5k neuronas/capa (375k neuronas aprox) 
+
+     con menos capas que suman el mismo numero de neuronas los resultados en cuanto a espacio ocupado son peores que con 500k de neuronas en capas de 5k
+
+
+*/
+//
    // ShowNetwork(network);
+   
+    AddLayer(&network, 2, "", 0);
 
-   /*AddLayer(&network, 256, "paso", 0);
-    AddLayer(&network, 300, "paso", 0);
-    AddLayer(&network, 500, "paso", 0);
-    AddLayer(&network, 150, "paso", 0);
-    AddLayer(&network, 8, "paso", 0);*/
+    AddLayer(&network, 20, "sigmoid", 0);
+    AddLayer(&network, 38, "relu", 0);
+    AddLayer(&network, 20, "sigmoid", 0);
+   
+  
+    AddLayer(&network, 4, "paso", 0);
 
-    double input[2] = {1.0, 0.0};
+
+    double input[8][2] = { {1.0,0.0}, {1.0,1.0}, {0.0,5.0}, {0.0,7.0}, {0.0,9.0}, {0.0,3.0}, {1.0,3.0}, {1.0,4.0}};
+    int expected [8][4] = {{1,0,1,0}, {1,0,1,1}, {0,1,0,1}, {0,1,1,1}, {1,0,0,1}, {0,0,1,1}, {1,1,0,1}, {1,1,1,0}};
+
     Nnetwork* aux = &network;
-    processInput(aux, input);
+
+   
+    processInput(aux, input[0]);
 
     if(network->net == NULL)
     {
-        printf("algo ha pasado\n");
+        printf("\n\nLa red esta a null wtf\n\n");
     }  
 
     ShowNetwork(network);
 
-    ShowOutput(network);
+    //ShowOutput(network);
 
-    //-------------------Backforwarding-------------------------
+   /* double * otp = getoutput(network);
+
+    for(int i=0;i<network->otplayer->numneurons;i++)
+    {
+       
+        printf("Neurona %d: %f\n", (i+1), otp[i]);
+
+    }
+
+    //-----------------------------Backpropagation-----------------------------------
+
+   // double input[8] = {1.0, 0.0, 3.0, 4.0, 2.0, 56.5, 9.0, 6.0}; */
 
 
 
