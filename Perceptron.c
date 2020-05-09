@@ -8,7 +8,7 @@ void init (neuron* perceptron, char* activ, double alfa, double bias, int ninp, 
 {
     neuron percep = malloc(sizeof(struct perceptron));
     percep->activation = malloc(sizeof(activ));
-    //percep->pesos= malloc(sizeof(ninp*sizeof(double)));
+    percep->pesos;//= malloc(sizeof(ninp*sizeof(double)));
 
     strcpy(percep->activation, activ);
     percep->nentradas = ninp;
@@ -46,17 +46,22 @@ void procesarInputs(neuron percep, double* entradas)
 
     sum+=percep->sesgo;
     percep->z=sum;
-
+    
     percep->salida = calculate(percep->activation, sum, percep->alpha);
 }
 
 void mostrarpercep(neuron n)
 {
-    printf("\n\t Sesgo: %f\n", n->sesgo);
-    printf("\t F. activacion: %s\n\n", n->activation);
+    printf("\n\t Bias: %f\n\n", n->sesgo);
 
     for (int  i = 0; i < n->nentradas; i++)
     {
-        printf("Peso e%d -- %f--\n",i, n->pesos[0]);
+        printf("Peso entrada %d -- %f--\n",i, n->pesos[i]);
     }
+
+    printf("\n---OUTPUT DE LA NEURONA: %f\n", n->salida);
+    printf("\n-------------------------------\n\n\n");
 }
+
+
+
