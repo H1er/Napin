@@ -83,7 +83,7 @@ double calculateprime(char* id, double x, double a)
     }
     else if(!strcmp(id, "tanh"))
     {
-        return tanh_prime(x);
+        return tanhip_prime(x);
     }
     else if(!strcmp(id, "softplus"))
     {
