@@ -12,9 +12,9 @@ struct perceptron{
     double alpha ;
     int nentradas ;
     double sesgo;
+    double z;
     double salida;
     double* pesos; // en el metodo init // = (double*) malloc(nentradas*sizeof(double));
-
 };
 
 

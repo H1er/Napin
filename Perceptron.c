@@ -8,7 +8,7 @@ void init (neuron* perceptron, char* activ, double alfa, double bias, int ninp, 
 {
     neuron percep = malloc(sizeof(struct perceptron));
     percep->activation = malloc(sizeof(activ));
-    percep->pesos;//= malloc(sizeof(ninp*sizeof(double)));
+    //percep->pesos= malloc(sizeof(ninp*sizeof(double)));
 
     strcpy(percep->activation, activ);
     percep->nentradas = ninp;
@@ -45,6 +45,7 @@ void procesarInputs(neuron percep, double* entradas)
     }
 
     sum+=percep->sesgo;
+    percep->z=sum;
 
     percep->salida = calculate(percep->activation, sum, percep->alpha);
 }
