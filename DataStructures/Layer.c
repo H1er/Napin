@@ -55,23 +55,17 @@ void Addlayer(TLayer * plist,TLayer * otp, int numneurons, char* activation, dou
 void showLayer (TLayer lay)
 {
   printf("\n----------Layer %d-------\n", lay->layerid);
-  printf("---Neuronas---: %d\n", lay->numneurons);
-  printf("\n");
+  printf("---Neurons---> %d\n", lay->numneurons);
+  printf("---Activation function-->: %s\n", lay->neurons[0]->activation);
+  printf("\n\n");
 
   for(int i=0;i<lay->numneurons;i++)
   {
     printf("---Neuron %d---\n", i);
-    printf("Bias: %f\n", (lay->neurons[i])->sesgo);
-    for(int j=0;j<(lay->neurons[i])->nentradas;j++)
-    {
-      printf("Peso entrada %d: %f\n",j, ((lay->neurons[i])->pesos[j]));
-    }
-
-    printf("---OUTPUT DE LA NEURONA: %f\n", lay->output[i]);
-    printf("\n");
+    
+    mostrarpercep(lay->neurons[i]);
   }
-  printf("Funcion activacion: %s\n", lay->neurons[0]->activation);
-  printf("Entradas/neurona: %d\n", lay->ninputs);
+
   printf("---------------------------\n\n\n");
 }
 
