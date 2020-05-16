@@ -35,9 +35,9 @@ void AddLayer(Nnetwork* net, int numneurons, char* activation, double alpha)
 
 void ShowNetwork(Nnetwork net)
 {
-    printf("\n------Network Structure and info------\n\n\n");
+    printf("\n--------------------------Network Structure and info---------------------------\n\n\n");
     Show(net->net);
-    printf("--------------------------------------\n\n\n");
+    printf("---------------------------------------------------------------------------------\n\n\n");
 }
 
 void ShowOutput(Nnetwork net)

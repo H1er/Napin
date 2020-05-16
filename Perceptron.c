@@ -60,7 +60,7 @@ void mostrarpercep(neuron n)
     }
 
     printf("\n---OUTPUT DE LA NEURONA: %f\n", n->salida);
-    printf("\n-------------------------------\n\n\n");
+    printf("\n----------------------------------\n\n\n");
 }
 
 

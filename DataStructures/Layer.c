@@ -54,19 +54,19 @@ void Addlayer(TLayer * plist,TLayer * otp, int numneurons, char* activation, dou
 
 void showLayer (TLayer lay)
 {
-  printf("\n----------Layer %d-------\n", lay->layerid);
+  printf("\n--------------------Layer %d-----------------\n\n", lay->layerid);
   printf("---Neurons---> %d\n", lay->numneurons);
   printf("---Activation function-->: %s\n", lay->neurons[0]->activation);
   printf("\n\n");
 
   for(int i=0;i<lay->numneurons;i++)
   {
-    printf("---Neuron %d---\n", i);
+    printf("-------------Neuron %d-------------\n", i);
     
     mostrarpercep(lay->neurons[i]);
   }
 
-  printf("---------------------------\n\n\n");
+  printf("\n-----------------------------------------------\n\n\n");
 }
 
 void Show(TLayer  plist)
