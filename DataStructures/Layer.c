@@ -1,5 +1,6 @@
 #include "Layer.h"
 #include "../Perceptron.h"
+#include "../Functions/activationFunctions.h"
 #include <string.h>
 #include <time.h>
 
@@ -23,6 +24,7 @@ void Addlayer(TLayer * plist,TLayer * otp, int numneurons, char* activation, dou
 
   if(ptr == NULL) //primera capa
   {
+	aux->prev = NULL;
     aux->ninputs = ninputs;
     (*plist) = aux;
     (*otp) = (*plist);
@@ -101,7 +103,7 @@ void processLayer(TLayer* layer, double* entradas)
   {
   
     procesarInputs(lay->neurons[j], inp);
-    lay->output[j] = (lay->neurons[j])->salida;
+    lay->output[j] = (lay->neurons[j])->otp;
    
   }
 
@@ -117,9 +119,9 @@ void Destroy(TLayer * plist)
 
   while (ptr != NULL)
   {
-      aux = ptr;
-      ptr = ptr->next;
-      free(aux);
+    aux = ptr;
+    ptr = ptr->next;
+    free(aux);
   }
 
   (*plist) = NULL;
@@ -136,8 +138,36 @@ struct Layer getIndex(TLayer plist, int index)
 
   if (plist->next == NULL)
   {
-    printf("Error, el indice no existe");
+	  printf("Error, el indice no existe");
   }
 
   return *plist;
 }
+
+void updateWeights(TLayer lay, int numlays, double learning_rate, double* expected)
+{
+	for(int i=0; i<lay->numneurons;i++)
+	{
+
+
+		for(int j=0;j<lay->neurons[i]->nentradas;j++)
+		{
+			neuron n = lay->neurons[i];
+
+			if(lay->layerid == numlays-1) //ultima capa
+			{
+				double rectif = ((2*(n->otp - expected[i])) * (calculateprime(n->activation, n->z, n->alpha)) * (lay->prev->neurons[j]->otp));
+printf(" Weight before: %f\n", n->pesos[j]);
+				printf("Coste: %f, derivada activacion: %f, output neurona previa: %f , RECTIF: %f\n", (2*(n->otp - expected[i])) , calculateprime(n->activation, n->z, n->alpha), lay->prev->neurons[j]->otp, rectif);
+				n->pesos[j] -= (rectif * learning_rate);
+
+		printf(" Weight after: %f\n\n", n->pesos[j]);
+			}
+		}
+
+		printf("\n");
+	}
+
+
+}
+

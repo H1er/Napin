@@ -16,11 +16,9 @@ void processInput(Nnetwork* net2, double* input)
 {
     TLayer nnet = (*net2)->net;
     int cont=0;
- 
 
     while(nnet!= NULL)
     {
-        
         processLayer(&nnet, input);
 
         nnet = nnet->next;
@@ -46,16 +44,12 @@ void ShowOutput(Nnetwork net)
 
     for(int i=0;i<net->otplayer->numneurons;i++)
     {
-        printf("Neuron %d, output: %f\n",i, net->otplayer->neurons[i]->salida);
+        printf("Neuron %d, output: %f\n",i, net->otplayer->neurons[i]->otp);
     }
 
     printf("\n\n");
 }
 
-void updateWeights(Nnetwork* net)
-{
-
-}
 
 double* getoutput(Nnetwork net)
 {
@@ -70,7 +64,14 @@ double* getoutput(Nnetwork net)
     }
 }
 
-void backprop(Nnetwork* net, double learning_rate)
+void backprop(Nnetwork* net, double learning_rate, double* expected)
 {
+    TLayer lay = (*net)->otplayer;
 
+    for(int i=(*net)->nlayers;i>0;i--)
+    {
+        updateWeights(lay, (*net)->nlayers, learning_rate, expected);
+        lay = lay->prev;
+
+    }
 }

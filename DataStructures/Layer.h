@@ -10,8 +10,8 @@ typedef struct Layer * TLayer;
 
 struct Layer
 {
-    neuron* neurons;
     int layerid;
+    neuron* neurons;
     int numneurons;
     double* input;
     double* output;
@@ -35,6 +35,8 @@ void Addlayer(TLayer * plist, TLayer * otp, int numneurons, char* activation, do
 void Show(TLayer plist);
 
 void Destroy(TLayer * plist);
+
+void updateWeights(TLayer lay, int numlays, double learning_rate, double* expected);
 
 
 #endif	/* LAYER_H */

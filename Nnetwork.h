@@ -27,6 +27,8 @@ void ShowOutput(Nnetwork net);
 
 void updatdeWeights(Nnetwork* net);
 
+void backprop(Nnetwork* net, double learning_rate, double* expected);
+
 double* getoutput(Nnetwork net);
 
 
