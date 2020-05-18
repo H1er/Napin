@@ -13,8 +13,9 @@ struct perceptron{
     int nentradas ;
     double sesgo;
     double z;
-    double salida;
+    double otp;
     double* pesos; // en el metodo init // = (double*) malloc(nentradas*sizeof(double));
+    double* bpp;
 };
 
 
