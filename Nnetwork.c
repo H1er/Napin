@@ -68,10 +68,9 @@ void backprop(Nnetwork* net, double learning_rate, double* expected)
 {
     TLayer lay = (*net)->otplayer;
 
-    for(int i=(*net)->nlayers;i>0;i--)
+    while(lay->prev != NULL) //cambiar por un while lay->prev != NULL
     {
         updateWeights(lay, (*net)->nlayers, learning_rate, expected);
         lay = lay->prev;
-
     }
 }

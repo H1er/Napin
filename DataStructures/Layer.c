@@ -146,26 +146,56 @@ struct Layer getIndex(TLayer plist, int index)
 
 void updateWeights(TLayer lay, int numlays, double learning_rate, double* expected)
 {
+  double rectif;
+  double prime;
+  double coa;
+  double otprev;
+
 	for(int i=0; i<lay->numneurons;i++)
 	{
-
-
 		for(int j=0;j<lay->neurons[i]->nentradas;j++)
 		{
 			neuron n = lay->neurons[i];
 
-			if(lay->layerid == numlays-1) //ultima capa
+			if(lay->layerid == numlays-1) //capa L (ultima)
 			{
-				double rectif = ((2*(n->otp - expected[i])) * (calculateprime(n->activation, n->z, n->alpha)) * (lay->prev->neurons[j]->otp));
-printf(" Weight before: %f\n", n->pesos[j]);
-				printf("Coste: %f, derivada activacion: %f, output neurona previa: %f , RECTIF: %f\n", (2*(n->otp - expected[i])) , calculateprime(n->activation, n->z, n->alpha), lay->prev->neurons[j]->otp, rectif);
-				n->pesos[j] -= (rectif * learning_rate);
-
-		printf(" Weight after: %f\n\n", n->pesos[j]);
+        prime = (calculateprime(n->activation, n->z, n->alpha));
+        coa = (2*(n->otp - expected[i]));
+        otprev = (lay->prev->neurons[j]->otp);
+        
+				rectif = coa * prime * otprev;
+         
+  	  	n->pesos[j] -= (rectif * learning_rate);
+        n->sesgo -= (coa*prime*learning_rate);
+	
+        n->bpp[0] = coa;
+        n->bpp[1] = prime;
 			}
-		}
+      else  //capa L-n (cualquiera menos la ultima)
+      {
 
-		printf("\n");
+        double sum=0;
+
+        for(int k=0;k<lay->next->numneurons;k++)
+        {
+          sum += (lay->next->neurons[k]->bpp[0] * lay->next->neurons[k]->bpp[1] *  lay->next->neurons[k]->pesos[i]);
+        }
+
+        prime = (calculateprime(n->activation, n->z, n->alpha));
+        coa = sum;
+
+        n->bpp[0] = coa;
+        n->bpp[1] = prime;
+        n->sesgo -= ((coa*prime)*learning_rate);
+
+        rectif = prime * coa * otprev;
+
+        n->pesos[j] -= (rectif * learning_rate);
+	   
+      }
+		}		
+	
+  
 	}
 
 
