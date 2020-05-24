@@ -1,12 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h> 
 #include <time.h>
+#include <math.h>
 #include "Nnetwork.h"
 #include "Functions/costFunctions.h" 
 
 int main ()
 {
     srand(time(NULL)); //sin esto los numeros generados para los pesos y los sesgos no son aleatorios
+
+
+
+
+
 
    /* printf("--------------------------Funcionamiento del perceptron simple--------------------------\n");
 
@@ -31,63 +37,91 @@ int main ()
     Nnetwork network;
    
 
-    createNetwork(&network, 2);
+    createNetwork(&network, 3);
 
     /*AddLayer(&network, 2, "paso", 0);
     AddLayer(&network, 3, "relu", 0);
     AddLayer(&network, 2, "paso", 0);*/
 
-/* limites (llena la ram): 75 capas de 5k neuronas/capa (375k neuronas aprox) 
 
-     con menos capas que suman el mismo numero de neuronas los resultados en cuanto a espacio ocupado son peores que con 500k de neuronas en capas de 5k
-
-
-*/
 //
    // ShowNetwork(network);
    
-    AddLayer(&network, 2, "", 0);
+    AddLayer(&network, 3, "sigmoid", 0);
+  // AddLayer(&network, 8, "relu", 0);
+ //AddLayer(&network, 8, "relu", 0);
+ 
+    AddLayer(&network, 4, "relu", 0);
 
-    AddLayer(&network, 20, "sigmoid", 0);
-    AddLayer(&network, 38, "relu", 0);
-    AddLayer(&network, 20, "sigmoid", 0);
+
+    AddLayer(&network, 8, "sigmoid", 0);
+
+    //numbers in binary from 0 to 7
+    double input[8][3] = {{0,0,0},{0,0,1},{0,1,0},{0,1,1},{1,0,0},{1,0,1},{1,1,0},{1,1,1}};
+    //the neuron in position n turns to 1, being n the binary number introduced  in the input
+    double expected[8][8] = {{1,0,0,0,0,0,0,0},{0,1,0,0,0,0,0,0},{0,0,1,0,0,0,0,0},{0,0,0,1,0,0,0,0},{0,0,0,0,1,0,0,0},{0,0,0,0,0,1,0,0},{0,0,0,0,0,0,1,0},{0,0,0,0,0,0,0,1}};
+    
+
    
-  
-    AddLayer(&network, 4, "paso", 0);
-
-
-    double input[8][2] = { {1.0,0.0}, {1.0,1.0}, {0.0,5.0}, {0.0,7.0}, {0.0,9.0}, {0.0,3.0}, {1.0,3.0}, {1.0,4.0}};
-    int expected [8][4] = {{1,0,1,0}, {1,0,1,1}, {0,1,0,1}, {0,1,1,1}, {1,0,0,1}, {0,0,1,1}, {1,1,0,1}, {1,1,1,0}};
-
+        
+   
     Nnetwork* aux = &network;
-
-   
-    processInput(aux, input[0]);
 
     if(network->net == NULL)
     {
-        printf("\n\nLa red esta a null wtf\n\n");
+        printf("\n\nnetwork is null wtf\n\n");
     }  
+  //processInput(aux, input[1]);
+  //ShowOutput(network);
 
-    ShowNetwork(network);
 
-    //ShowOutput(network);
 
-   /* double * otp = getoutput(network);
+  //-------------------------------Training and backpropagation--------------------------------
 
-    for(int i=0;i<network->otplayer->numneurons;i++)
+    double lr = 3;
+    int epochs = 1000000;
+
+    for(int j=0;j<epochs;j++)
     {
-       
-        printf("Neurona %d: %f\n", (i+1), otp[i]);
+        printf("\tEpoch %d \n",j);
 
+        if(j%10000 == 0)
+        {
+            lr= (int)lr/2;
+        }
+        
+        for(int i=0;i<8;i++)
+        {
+           // printf("\n------------------------\n");
+            processInput(&network, input[i]);
+            //ShowOutput(network);
+            //printf("expected en %d:  %f\n", i, expected[i]);
+            backprop(&network, lr, expected[i]);
+            //ShowOutput(network);
+            //printf("------------------------\n\n\n\n");
+
+        }
     }
 
+    printf("\n");
+
+        for(int i=0;i<8;i++)
+        {
+
+            printf("Expected en la salida %d: \n", i);
+            processInput(&network, input[i]);
+            ShowOutput(network);
+            
+            
+        }
+   
+
+    printf("\n\n\n");
+
+   
+
+  
     //-----------------------------Backpropagation-----------------------------------
-
-   // double input[8] = {1.0, 0.0, 3.0, 4.0, 2.0, 56.5, 9.0, 6.0}; */
-
-
-
 
 
 
