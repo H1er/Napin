@@ -1,3 +1,3 @@
 # Napin
 
-Creating a simple neural network api
+Library to create simple fully connected neural networks
